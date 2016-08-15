@@ -18,18 +18,19 @@ public class TodoHelper {
 			todos.get(todoIndex - 1).setChecked(true);
 	}
 
-	public void remove(int todoIndex) {
-		todos.remove(todoIndex - 1);
+	public void remove(int inputMenuIndex) {
+		todos.remove(inputMenuIndex - 1);
 	}
 
-	public String getTodos() {
-		StringBuilder listOfTodos = new StringBuilder();
-		int counter = 1;
+	public Todo[] getTodos() {
+		Todo[] todosToIterate = new Todo[todos.size()];
+		int counter = 0;
+
 		for (Todo item : todos) {
-			listOfTodos.append(counter + " - " + getStatusCharacter(item) + " " + item.getDescription() + "\n");
+			todosToIterate[counter] = item;
 			counter++;
 		}
-		return listOfTodos.toString();
+		return todosToIterate;
 	}
 
 	public String getStatusCharacter(Todo todo) {

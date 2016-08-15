@@ -1,8 +1,5 @@
 package apps.lyk.todo;
 
-import java.util.ArrayList;
-import java.util.Collection;
-
 public class Todo {
 
 	private String description;

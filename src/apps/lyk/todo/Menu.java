@@ -4,10 +4,18 @@ public class Menu {
 
 	public static void printMenu(TodoHelper todoHelper) {
 
+		Todo[] todosToPrint = todoHelper.getTodos();
 		StringBuilder menu = new StringBuilder();
 		menu.append("Todos\n");
 		menu.append("========\n");
-		menu.append(todoHelper.getTodos());
+		for (int i = 0; i < todosToPrint.length; i++) {
+			menu.append(i+1);
+			menu.append(" - ");
+			menu.append(todoHelper.getStatusCharacter(todosToPrint[i]));
+			menu.append(" ");
+			menu.append(todosToPrint[i].getDescription());
+			menu.append("\n");
+		}
 		menu.append("Menu\n");
 		menu.append("========\n");
 		menu.append("0 - Exit\n");
