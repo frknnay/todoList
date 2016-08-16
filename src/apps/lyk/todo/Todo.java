@@ -3,24 +3,31 @@ package apps.lyk.todo;
 public class Todo {
 
 	private String description;
-	private boolean checked;
-	
-	public Todo(String description){
+	private boolean done;
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
 		this.description = description;
-		this.checked = false;
 	}
 
-	public boolean isChecked() {
-		return checked;
+	public boolean isDone() {
+		return done;
 	}
 
-	public void setChecked(boolean checked) {
-		this.checked = checked;
+	public void setDone(boolean done) {
+		this.done = done;
+	}
+
+	public Todo(String description) {
+		super();
+		this.description = description;
 	}
 	
-	public String getDescription()
-	{
-		return this.description;
+	public String getCheckbox(){
+		return done ? "☑" : "☐";
 	}
-	
+
 }

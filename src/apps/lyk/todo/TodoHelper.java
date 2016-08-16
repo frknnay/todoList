@@ -1,43 +1,39 @@
 package apps.lyk.todo;
-
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 public class TodoHelper {
 
-	private List<Todo> todos = new ArrayList<>();
+	private static List<Todo> todos = new ArrayList<>();
 
-	public void add(String description) {
-		todos.add(new Todo(description));
+	public static void add(Todo todo) {
+		todos.add(todo);
 	}
 
-	public void mark(int todoIndex) {
-		if (todos.get(todoIndex - 1).isChecked()) {
-			todos.get(todoIndex - 1).setChecked(false);
-		} else
-			todos.get(todoIndex - 1).setChecked(true);
+	public static void remove(int index) {
+		Todo todo = todos.get(index);
+		todos.remove(todo);
 	}
 
-	public void remove(int inputMenuIndex) {
-		todos.remove(inputMenuIndex - 1);
+	/**
+	 * This method sets a Todo object's done field which is placed in the
+	 * specified index of todos list
+	 * 
+	 * @param index list index of the Todo object to be modified
+	 * @param isDone a boolean value which indicates whether it's done or not
+	 */
+	public static void mark(int index, boolean isDone) {
+		Todo t = todos.get(index);
+		t.setDone(isDone);
 	}
 
-	public Todo[] getTodos() {
-		Todo[] todosToIterate = new Todo[todos.size()];
-		int counter = 0;
-
-		for (Todo item : todos) {
-			todosToIterate[counter] = item;
-			counter++;
-		}
-		return todosToIterate;
+	public static Iterator<Todo> getIterator() {
+		return todos.iterator();
 	}
 
-	public String getStatusCharacter(Todo todo) {
-		if (todo.isChecked())
-			return "☑";
-		else
-			return "☐";
+	public static Collection<Todo> getTodos() {
+		return todos;
 	}
-
 }

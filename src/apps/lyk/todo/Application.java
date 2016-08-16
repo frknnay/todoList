@@ -3,39 +3,54 @@ package apps.lyk.todo;
 import java.util.Scanner;
 
 public class Application {
-	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
-		String input = "";
-		TodoHelper tHelper = new TodoHelper();
-		while (!input.equals("0")) {
-			Menu.printMenu(tHelper);
-			input = scanner.nextLine();
-			operation(input, tHelper);
 
+	public static void main(String[] args) {
+		String input = "";
+		Scanner scanner = new Scanner(System.in);
+
+		while (true) {
+			Menu.printMenu();
+			input = scanner.nextLine();
+
+			processInput(input);
 		}
+
 	}
 
-	public static void operation(String command, TodoHelper todoHelper) {
-		String[] commands = command.split(",");
-		int action = Integer.parseInt(commands[0]);
-		String param = commands[1];
+	private static void processInput(String input) {
+
+		String[] inputParams = input.split(",");
+
+		int action = Integer.parseInt(inputParams[0]);
+		String param = null;
+		if (inputParams.length > 1) {
+			param = inputParams[1];
+		}
+
+		System.out.println("[debug] action: " + action);
+		System.out.println("[debug] param: " + param);
+
+		int index;
 		switch (action) {
 		case 0:
 			System.out.println("Exiting...");
-			break;
+			System.exit(0);
 		case 1:
-			todoHelper.add(param);
+			Todo newTodo = new Todo(param);
+			TodoHelper.add(newTodo);
 			break;
 		case 2:
-			todoHelper.mark(Integer.parseInt(param));
+			index = Integer.parseInt(param);
+			TodoHelper.mark(index - 1, true);
 			break;
 		case 3:
-			todoHelper.remove(Integer.parseInt(param));
+			index = Integer.parseInt(param);
+			TodoHelper.remove(index - 1);
 			break;
+
 		default:
-			System.out.println("Please choose a number between 0-1");
 			break;
 		}
-	}
 
+	}
 }
