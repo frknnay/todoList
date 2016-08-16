@@ -6,7 +6,7 @@ public class Todo {
 	private boolean done;
 
 	public String getDescription() {
-		return description;
+		return this.description;
 	}
 
 	public void setDescription(String description) {
@@ -14,7 +14,7 @@ public class Todo {
 	}
 
 	public boolean isDone() {
-		return done;
+		return this.done;
 	}
 
 	public void setDone(boolean done) {
@@ -25,9 +25,9 @@ public class Todo {
 		super();
 		this.description = description;
 	}
-	
-	public String getCheckbox(){
-		return done ? "☑" : "☐";
+
+	public String getCheckbox() {
+		return this.done ? "☑" : "☐";
 	}
 
 }

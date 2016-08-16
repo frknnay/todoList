@@ -1,4 +1,5 @@
 package apps.lyk.todo;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -21,8 +22,10 @@ public class TodoHelper {
 	 * This method sets a Todo object's done field which is placed in the
 	 * specified index of todos list
 	 * 
-	 * @param index list index of the Todo object to be modified
-	 * @param isDone a boolean value which indicates whether it's done or not
+	 * @param index
+	 *            list index of the Todo object to be modified
+	 * @param isDone
+	 *            a boolean value which indicates whether it's done or not
 	 */
 	public static void mark(int index, boolean isDone) {
 		Todo t = todos.get(index);
