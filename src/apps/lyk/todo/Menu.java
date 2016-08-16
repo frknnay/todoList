@@ -8,14 +8,13 @@ public class Menu {
 		StringBuilder menu = new StringBuilder(50);
 		int index = 1;
 		Iterator<Todo> todos = TodoHelper.getIterator();
-		Todo currentTodo = null;
 
 		menu.append("TODOs\n");
 		menu.append("=====\n");
 		menu.append("\n");
 
 		while (todos.hasNext()) {
-			currentTodo = todos.next();
+			Todo currentTodo = currentTodo = todos.next();
 			menu.append("(");
 			menu.append(index++);
 			menu.append(") ");
